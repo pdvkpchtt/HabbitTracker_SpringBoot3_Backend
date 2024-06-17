@@ -1,19 +1,31 @@
 package com.example.firstapp;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
-public class User {
+@Entity
+public class Users {
+    @Id
+    @SequenceGenerator(
+            name = "user_id_squence",
+            sequenceName = "user_id_squence"
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_id_squence"
+    )
     private Integer id;
     private String name;
     private String avatart;
 
-    public User(Integer id, String name, String avatart) {
+    public Users(Integer id, String name, String avatart) {
         this.id = id;
         this.name = name;
         this.avatart = avatart;
     }
 
-    public User() {}
+    public Users() {}
 
     public Integer getId() {
         return id;
@@ -43,8 +55,8 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(avatart, user.avatart);
+        Users users = (Users) o;
+        return Objects.equals(id, users.id) && Objects.equals(name, users.name) && Objects.equals(avatart, users.avatart);
     }
 
     @Override
