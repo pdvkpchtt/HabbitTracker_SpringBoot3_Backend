@@ -16,7 +16,10 @@ public class Users {
             generator = "user_id_squence"
     )
     private Integer id;
+
+    @Column(nullable = false, unique = true)
     private String name;
+
     private String avatart;
 
     public Users(Integer id, String name, String avatart) {
